@@ -35,12 +35,15 @@ INSERT INTO users(u_number, u_id, u_name, email) VALUES
 	(1, 'abc1234', '가나다', NULL);
 INSERT INTO users VALUES (2, 'abc3456', '마바사', 'abc@ab.com');
 
-/* 데이터 조회 
+/* 데이터 조회
 SELECT * FROM 테이블명; 을 적으면
 해당 테이블에 적재된 테이터를 조회할 수 있다.
 SELECT (컬럼명1, 컬럼명2...) FROM 테이블명;
-을 이용해서 특정 컬럼에 적재된 데이터만 조회할 수도 있다. */
+을 이용해서 특정 컬럼에 적재된 데이터만 조회할 수도 있다.
+use 구문으로 데이터베이스를 지정한 경우에는 데이터베이스를 생략할 수 있다. */
+SELECT * FROM bitcamp06.users; -- 거의 안씀
 SELECT * FROM users;
+
 
 /* 계정을 하나 더 만들어보겠습니다.
 이번 계정은 SELECT 권한 줘보기 */
