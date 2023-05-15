@@ -103,4 +103,25 @@ DELETE FROM user_tbl WHERE user_num = 4;
 SELECT * FROM user_tbl;
 SELECT * FROM buy_tbl;
 
+/* 임시테이블 user_tbl2 확인 */
+SELECT * FROM user_tbl2;
+
+/* DELETE FROM을 이용해서 user_tbl2의 2020-08-15 이후 가입자를 삭제해보기 */
+DELETE FROM user_tbl2 WHERE entry_date > '2020-08-15';
+
+/* DELETE FROM을 이용해서 user_tbl2의 2020-08-02 가입자만 삭제하기 */
+DELETE FROM user_tbl2 WHERE entry_date = '2020-08-02';
+
+/* DISTINCT 실습을 위해 데이터 몇개 추가하기 */
+INSERT INTO user_tbl VALUES (NULL, '이자바', 1994, '서울', 178, '2020-09-01');
+INSERT INTO user_tbl VALUES (NULL, '신디비', 1992, '경기', 164, '2020-09-01');
+INSERT INTO user_tbl VALUES (NULL, '최다희', 1998, '경기', 158, '2020-09-01');
+
+/* DISTINCT는 특정 컬럼에 들어있는 데이터의 '종류'만 한 번씩 나열해 보여준다. */
+SELECT DISTINCT user_birth_year FROM user_tbl;
+SELECT DISTINCT user_address FROM user_tbl;
+
+/* 컬럼 별명 붙이고, 조회하기 */
+SELECT user_name AS 유저명 FROM user_tbl;
+SELECT user_name AS 유저명, entry_date AS 가입날짜 FROM user_tbl;
 
