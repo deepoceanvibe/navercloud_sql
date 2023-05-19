@@ -146,3 +146,45 @@ FROM
 ON
 	l.staff_num = r.staff_supervisor; -- 이게 JOIN 조건임
     
+-- UNION : SELECT문 두 개를 위 아래로 배치해서 양쪽 결과를 붙여준다.
+-- 수직적 확장을 고려할 때 주로 사용한다.
+-- 고양이 테이블 생성
+CREATE TABLE CAT (
+	animal_name VARCHAR(20),
+    animal_age INT,
+    animal_owner VARCHAR(20),
+    animal_type VARCHAR(20)
+);
+-- 강아지 테이블 생성
+CREATE TABLE DOG (
+	animal_name VARCHAR(20),
+    animal_age INT,
+    animal_owner VARCHAR(20),
+    animal_type VARCHAR(20)
+);
+-- 고양이와 강아지에 데이터 집어넣기
+INSERT INTO CAT VALUES
+	('룰루', 4, '룰맘', '고양이'),
+    ('어완자', 5, '양정', '고양이');
+INSERT INTO DOG VALUES
+	('턱순이', 7, '이영수', '강아지'),
+    ('구슬이', 8, '이영수', '강아지');
+    
+-- UNION 합치기
+SELECT * FROM CAT
+UNION
+SELECT * FROM DOG;
+
+-- FULL OUTER JOIN은 UNION 통해서 한다.
+SELECT m.mem_num, m.mem_name, m.mem_addr,
+	p.pur_date, p.pur_num, p.pur_price
+FROM member_tbl m RIGHT JOIN purchase_tbl p
+USING (mem_num)
+
+UNION
+
+SELECT m.mem_num, m.mem_name, m.mem_addr,
+	p.pur_date, p.pur_num, p.pur_price
+FROM member_tbl m LEFT JOIN purchase_tbl p
+USING (mem_num);
+
